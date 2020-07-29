@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Enter Car Info</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<style>
+    .error{
+        color:#ff0000;
+    }
+</style>
+
+<div class="container">
+    <h2 class="text-danger">Enter car info</h2>
+    <form method="post" th:object="${car}">
+
+        <div class="form-group">
+            <label for="car-company">Company</label>
+            <input type="text" id="car-company" class="form-control"
+                   th:field="*{company}"/>
+            <span th:if="${#fields.hasErrors('company')}"
+                  th:errors="${car.company}" class="error">
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label for="model">Model</label>
+            <input type="text" id="model" class="form-control"
+                   th:field="*{model}"/>
+            <span th:if="${#fields.hasErrors('model')}"
+                  th:errors="${car.model}" class="error">
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label for="year">Year</label>
+            <input type="number" id="year" class="form-control"
+                   th:field="*{year}"/>
+            <span th:if="${#fields.hasErrors('year')}"
+                  th:errors="${car.year}" class="error">
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label for="color">Color</label>
+            <select id="color" class="form-control-selectpicker"
+                    th:field="*{color}">
+                <option th:each="color:${colors}" th:value="${color}" th:text="${color}">
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" id="price" class="form-control"
+                   th:field="*{price}"/>
+            <span th:if="${#fields.hasErrors('price')}"
+                  th:errors="${car.price}" class="error">
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label for="regnumber">Registration number</label>
+            <input type="text" id="regnumber" class="form-control"
+                   th:field="*{regNumber}"/>
+        </div>
+
+
+        <button type="submit">OK</button>
+    </form>
+</div>
+</body>
+</html>

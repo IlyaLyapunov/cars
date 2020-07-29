@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <beans xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans">
+
+    <mvc:annotation-driven/>
+    <!--controller package -->
+    <context:component-scan base-package="ilyalyapunov.cars"/>
+
+
+    <bean class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver" id="templateResolver">
+        <property value="/WEB-INF/views/" name="prefix"/>
+        <property value=".html" name="suffix"/>
+        <property value="HTML" name="templateMode"/>
+        <property value="true" name="cacheable"/>
+    </bean>
+
+
+    <bean class="org.thymeleaf.spring4.SpringTemplateEngine" id="templateEngine">
+        <property name="templateResolver" ref="templateResolver"/>
+        <property value="true" name="enableSpringELCompiler"/>
+    </bean>
+
+
+    <bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver" id="viewResolver">
+        <property name="templateEngine" ref="templateEngine"/>
+        <property value="UTF-8" name="characterEncoding"/>
+        <property value="1" name="order"/>
+        <property value="*" name="viewNames"/>
+    </bean>
+
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+
+</beans>

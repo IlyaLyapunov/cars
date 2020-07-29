@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Info</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<div class="container">
+
+    <h2 class="text-danger">Car info</h2>
+
+    <table class = "table">
+        <tbody>
+            <tr>
+                <td>
+                    Company
+                </td>
+                <td>
+                    Model
+                </td>
+                <td>
+                    Year
+                </td>
+                <td>
+                    Color
+                </td>
+                <td>
+                    Price
+                </td>
+                <td>
+                    regNumber
+                </td>
+                <td>
+                    Age
+                </td>
+            </tr>
+            <tr>
+                <td th:text="${car.company}">
+                </td>
+                <td th:text="${car.model}">
+                </td>
+                <td th:text="${car.year}">
+                </td>
+                <td th:text="${car.color}">
+                </td>
+                <td th:text="${car.price}">
+                </td>
+                <td th:text="${car.regNumber}">
+                </td>
+                <td th:text="${age}">
+                </td>
+                <td>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
